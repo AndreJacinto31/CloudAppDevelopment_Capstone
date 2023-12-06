@@ -1,17 +1,15 @@
 import requests
 import json
-# import related models here
+from .models import CarDealer, DealerReview
 from requests.auth import HTTPBasicAuth
-
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from ibm_watson import NaturalLanguageUnderstandingV1
+from ibm_watson.natural_language_understanding_v1 import Features,SentimentOptions
+import time
 
 # Create a `get_request` to make HTTP GET requests
 # e.g., response = requests.get(url, params=params, headers={'Content-Type': 'application/json'},
 #                                     auth=HTTPBasicAuth('apikey', api_key))
-import requests
-import json
-from .models import CarDealer
-from requests.auth import HTTPBasicAuth
-
 def get_request(url, **kwargs):
     print(kwargs)
     print("GET from {} ".format(url))
